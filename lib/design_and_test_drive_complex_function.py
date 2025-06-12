@@ -9,6 +9,17 @@ def dob_format_checker(date_of_birth):
 
     return False
 
+#  Alterative solution but unable to test since dateutil creates module error
+# import dateutil
+# def dob_format_checker(date_of_birth):
+#     try:
+#         # Try to parse the date using dateutil.parser
+#         parsed_date = parser.parse(date_of_birth)
+#         return True  # If parsing is successful, the format is valid
+#     except ValueError:
+#         return False  # If parsing fails, the format is invalid
+
+
 def check_age(date_of_birth):
     if type(date_of_birth) == str:
             if dob_format_checker(date_of_birth) == True:
