@@ -9,6 +9,9 @@ class TaskTracker:
         self.task_count += 1
         print(f"Task added: {task}. Task count is {self.task_count}.")
 
+    def view_tasks(self):
+        return self.tasks
+
     def remove_task(self, task):
         if task in self.tasks:
             self.tasks.remove(task)

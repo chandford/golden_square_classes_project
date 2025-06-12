@@ -18,6 +18,14 @@ def test_add_task_stores_multiple_tasks():
     tracker.add_task("Pack for trip")
     assert tracker.tasks == ["Walk the dog", "Water the plants", "Pack for trip"]
 
+def view_tasks_displays_tasks(): 
+    tracker = TaskTracker()
+    tracker.add_task("Walk the dog")
+    tracker.add_task("Water the plants")
+    tracker.add_task("Pack for trip")
+    tracker.view_tasks == ["Walk the dog", "Water the plants", "Pack for trip"]
+
+
 def test_remove_task_removes_single_task():
     tracker = TaskTracker()
     tracker.add_task("Walk the dog")
