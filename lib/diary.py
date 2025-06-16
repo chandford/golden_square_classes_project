@@ -50,4 +50,7 @@ class Diary:
         #   An instance of DiaryEntry representing the entry that is closest to,
         #   but not over, the length that the user could read in the minutes
         #   they have available given their reading speed.
-        pass
+            chunk_length = wpm * minutes
+            suitable_list = [entry for entry in self.entry_list if entry.count_words() <= chunk_length]
+            sorted_suitable_entries = sorted(suitable_list, key= lambda l: l.count_words())
+            return sorted_suitable_entries[-1]

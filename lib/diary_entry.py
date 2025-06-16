@@ -8,6 +8,7 @@ class DiaryEntry:
         #   Sets the title and contents properties
         self.title = title
         self.contents = contents
+        self.position = 0
 
     def count_words(self):
         # Returns:
@@ -38,4 +39,13 @@ class DiaryEntry:
         # If called again, `reading_chunk` should return the next chunk,
         # skipping what has already been read, until the contents is fully read.
         # The next call after that it should restart from the beginning.
-        pass
+        chunk_length = wpm * minutes
+        contents_list = self.contents.split()
+
+        if self.position >= len(contents_list):
+            self.position = 0
+
+        chunk = " ".join(contents_list[self.position: self.position+chunk_length])
+        self.position += chunk_length
+
+        return chunk

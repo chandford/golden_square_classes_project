@@ -1,5 +1,5 @@
-from lib.diary import *
-from lib.diary_entry import * 
+from lib.diary import Diary
+from lib.diary_entry import DiaryEntry
 
 """
 When we add (a) Diary Entry/Entries
@@ -61,7 +61,6 @@ def test_reading_time_totals_all_entries_reading_time():
     entry_2 = DiaryEntry("New Title", "1 2 3 4 5 6 7 8 9 0")
     entry_3 = DiaryEntry("Third Title", "1 2 3 4 5 6 7 8 9 0")
 
-
     diary = Diary()
     diary.add(entry_1)
     assert diary.reading_time(1) == 2 # 2 words to read
@@ -76,4 +75,19 @@ And we search for a word not in any track title
 We get an empty list back
 """
 def test_find_best_entry_returns_closest_matching_diary_entry():
-    pass
+    entry_1 = DiaryEntry("My Title", "diary contents")
+    entry_2 = DiaryEntry("New Title", "1 2 3 4")
+    entry_3 = DiaryEntry("Third Title", "1 2 3 4 5 6 7 8 9 0")
+
+    diary = Diary()
+    diary.add(entry_1)
+    diary.add(entry_2)
+    diary.add(entry_3) 
+    assert isinstance(diary.find_best_entry_for_reading_time(2, 2), DiaryEntry)
+    chosen_entry = diary.find_best_entry_for_reading_time(2, 2)
+    assert chosen_entry.title == "New Title"
+    chosen_entry = diary.find_best_entry_for_reading_time(10, 20)
+    assert chosen_entry.title == "Third Title"
+
+
+
