@@ -6,12 +6,14 @@ class DiaryEntry:
     def __init__(self, title, contents): # title, contents are strings
         # Side-effects:
         #   Sets the title and contents properties
-        pass
+        self.title = title
+        self.contents = contents
 
     def count_words(self):
         # Returns:
         #   An integer representing the number of words in the contents
-        pass
+            words_list = self.contents.split()
+            return len(words_list)
 
     def reading_time(self, wpm):
         # Parameters:
@@ -20,7 +22,9 @@ class DiaryEntry:
         # Returns:
         #   An integer representing an estimate of the reading time in minutes
         #   for the contents at the given wpm.
-        pass
+            word_count = self.count_words()
+            reading_time = word_count / wpm
+            return int(reading_time)
 
     def reading_chunk(self, wpm, minutes):
         # Parameters:
